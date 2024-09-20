@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NFT Marketplace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>NFT Marketplace</h1>
+  <form id="mint-nft-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea><br><br>
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image"><br><br>
+    <button id="mint-nft-button">Mint NFT</button>
+  </form>
+  <div id="nft-list"></div>
+
+  <script>
+    const mintNFTForm = document.getElementById('mint-nft-form');
+    const mintNFTButton = document.getElementById('mint-nft-button');
+    const nftList = document.getElementById('nft-list');
+
+    mintNFTButton.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const description = document.getElementById('description').value;
+      const image = document.getElementById('image').files[0];
+
+      const nft = await nftMarketplace.mintNFT(name, description, image);
+      console.log(nft);
+    });
+  </script>
+</body>
+</html>
